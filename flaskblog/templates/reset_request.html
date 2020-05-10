@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <div class= 'content-section'>  
+        <form action="" method="POST">
+            {{form.hidden_tag()}}
+            <fieldset class='form-group'>
+                <legend class= 'border-bottom b-4'>Sign In</legend>
+                <div class="form-group">
+                    {% if form.email.errors %}
+                    {{form.email(class='form-control form-control-lg is-invalid')}}
+                    <div class="invalid--feedback">
+                        {% for err  in form.email.errors %}
+                          <span>{{err}}</span>
+                        {% endfor %}
+                    </div>
+                  {% else %}
+                  {{form.email(placeholder='Email',class='form-control form-control-lg')}}
+                  {% endif %}
+                </div>
+            </fieldset>
+            <div class="form-group">
+                {{form.submit(class='btn btn-outline-info')}}
+            </div>
+        </form>
+    </div>
+{% endblock content %} 
